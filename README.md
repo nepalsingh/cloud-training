@@ -322,3 +322,35 @@ Lambda - why do we use them?
 |Average Active Instances / Concurrent Executions|~1000 instances|<100 Preprocessor instances<br/><25 Concurrent Executions in Lambda|
 |Average Daily Costs|<$100|<$100|
 
+### Lambda use containers under the hood?
+
+**Yes and no! Per the doc here:**
+[https://dl.awsstatic.com/whitepapers/Overview-AWS-Lambda-Securitv.pdf](https://dl.awsstatic.com/whitepapers/Overview-AWS-Lambda-Securitv.pdf)
+```
+Execution environments are isolated from one another using several container-like technologies built into the Linux kernel, along with A WS proprietary isolation technologies. These technologies include: eg roups, namespaces, ch root, etc.. 
+```
+
+## AWS API Gateway
+- AWS Lambda + API Gateway: No infrastructure to manage
+- Support for the WebSocket Protocol
+- Handle API versioning (v I, v2...)
+- Handle different environments (dev,test, prod...)
+- Handle security (Authentication and Authorization)
+- Create API keys, handle request throttling
+- Swagger / Open API import to quickly define APIs
+- Transform and validate requests and responses
+- Generate SDK and API specifications
+- Cache API responses
+
+## API Gateway Integrations - High Level
+- Lambda Function
+  - Invoke Lambda function
+  - Easy way to expose REST API backed byAWS Lambda
+- HTTP
+  - Expose HTTP endpoints in the backend
+  - Example: internal HTTP API on premise, Application Load Balancer...
+  - Why? Add rate limiting, caching, user authentications, API keys, etc...
+- AWS Service
+  - Expose any AWS API through the API Gateway
+  - Example: start an AWS Step Function workflow, post a message to SQS
+  - Why? Add authentication, deploy publicly, rate control...
