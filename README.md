@@ -304,6 +304,6 @@ What is serverless
 - Essentially anything  that is managed service is considered serverless b/c you typically 
 - AWS Serverless Service
   - AWS lamdba
-  - Fargate - Serverss for ECS-EKS where we do not provision our infrastruture to run docker containers
-  - S3 - storage solution, 
-  - More info is available at ![More ServerLess](https://aws.amazon.com/serverless/)
+  - Fargate - Serverss for ECS-EKS provides infrastruture to run docker containers
+  - S3 - storage solution
+  - More info is available at [https://aws.amazon.com/serverless/](https://aws.amazon.com/serverless/)
