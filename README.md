@@ -292,3 +292,18 @@ key consideration for dynamoally db service:
 ### Teraform config
 - Use profile in provider template file for autehnticate
 - Use tfvar files to register 
+
+
+## Serverless
+
+What is serverless
+- Serverless does nopically t mean that there are no servers
+- Rather, it's a paradigm in which developers no longer have to directly manage servers
+- But servers are still being used in the background - you as a developer just do not see them
+- API gateway, Fargate, step functions 
+- Essentially anything  that is managed service is considered serverless b/c you typically 
+- AWS Serverless Service
+  - AWS lamdba
+  - Fargate - Serverss for ECS-EKS where we do not provision our infrastruture to run docker containers
+  - S3 - storage solution, 
+  - More info is available at ![More ServerLess](https://aws.amazon.com/serverless/)
