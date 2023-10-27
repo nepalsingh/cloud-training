@@ -295,8 +295,6 @@ key consideration for dynamoally db service:
 
 
 ## Serverless
-
-What is serverless
 - Serverless does nopically t mean that there are no servers
 - Rather, it's a paradigm in which developers no longer have to directly manage servers
 - But servers are still being used in the background - you as a developer just do not see them
@@ -307,3 +305,20 @@ What is serverless
   - Fargate - Serverss for ECS-EKS provides infrastruture to run docker containers
   - S3 - storage solution
   - More info is available at [https://aws.amazon.com/serverless/](https://aws.amazon.com/serverless/)
+
+### Lambda
+Lambda - why do we use them?
+- Now, let's talk a bit more about ***lambdas...***
+- Lambdas are ***virtual functions***, which means that there are no servers to manage
+- Because lambdas ***run on-demand*** - only when invoked, this is very different than the EC2 cost model
+- Lambdas have ***short execution*** periods - default of 3 seconds, with a max of 15 minutes (you can adjust this value within that range
+- With Lambdas, ***scaling is automated***, if you need more lambda functions, AWS will automatically provision them for you
+
+### Lambda case study - Netflix
+|Statistic|Existing Ec2|Enhanced Lambda|
+|:----|:----|:----| 
+|Average Time to First <br/> Response of New Instance|3 minutes|2006 ms|
+|Average Response Time of <br/>Warmed Instance|800 ms|1100 ms|
+|Average Active Instances / Concurrent Executions|~1000 instances|<100 Preprocessor instances<br/><25 Concurrent Executions in Lambda|
+|Average Daily Costs|<$100|<$100|
+
