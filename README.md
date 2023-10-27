@@ -126,7 +126,7 @@ data "aws_iam_policy_document" "ec2_assume_role_policy" {
 ```
 training@ip-172-31-21-113:~/cloud-training/cloud-training$ aws sts get-caller-identity
 {
-    "UserId": "AIDA6AK5C3HJ75ALAMT77",
+    "UserId": "AIDA6AK5C3H75ALAMT77",
     "Account": "96981224699607",
     "Arn": "arn:aws:iam::96981224699607:user/participant-17"
 }
@@ -324,7 +324,7 @@ Lambda - why do we use them?
 
 ### Lambda use containers under the hood?
 
-**Yes and no! Per the doc here:**
+__**Yes and no! Per the doc here:**__
 [https://dl.awsstatic.com/whitepapers/Overview-AWS-Lambda-Securitv.pdf](https://dl.awsstatic.com/whitepapers/Overview-AWS-Lambda-Securitv.pdf)
 ```
 Execution environments are isolated from one another using several container-like technologies built into the Linux kernel, along with A WS proprietary isolation technologies. These technologies include: eg roups, namespaces, ch root, etc.. 
