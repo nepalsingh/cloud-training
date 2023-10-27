@@ -126,9 +126,9 @@ data "aws_iam_policy_document" "ec2_assume_role_policy" {
 ```
 training@ip-172-31-21-113:~/cloud-training/cloud-training$ aws sts get-caller-identity
 {
-    "UserId": "AIDA6AK5B2HL75ALAMT77",
-    "Account": "962804699607",
-    "Arn": "arn:aws:iam::962804699607:user/participant-17"
+    "UserId": "AIDA6AK5C3HJ75ALAMT77",
+    "Account": "96981224699607",
+    "Arn": "arn:aws:iam::96981224699607:user/participant-17"
 }
 ```
 - Add two extension to VS CODE
