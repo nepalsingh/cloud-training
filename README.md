@@ -416,3 +416,18 @@ Amazon.com in a single codebase - a single Github repository perhaps?
 - Containers are lightweight, low overhead, and we can run more apps on a single server with containers
   
 *Sidenote: VM’s offer better security than containers due to OS isolation*
+
+
+## Docker Terminology 
+- *DockerFile* + **your application code** -> **Docker Image** -> __***Docker container***__
+- *DockerFile* will live in your application’s repository
+- Your source code + *DockerFile* will give us a Docker image
+- Docker images are how we share our application
+- An instance of a Docker image is a running container....this is a running instance of your application!
+- Don’t worry if this is not clear yet, we will be playing with images and containers shortly..
+
+### Docker image content
+1. Minimal OS layer
+2. Install apache and other component 
+3. App related :*artifacts*
+4. bootstrapping the :**app**
