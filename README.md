@@ -419,12 +419,39 @@ Amazon.com in a single codebase - a single Github repository perhaps?
 
 
 ## Docker Terminology 
-- *DockerFile* + **your application code** -> **Docker Image** -> __***Docker container***__
-- *DockerFile* will live in your application’s repository
-- Your source code + *DockerFile* will give us a Docker image
+- *DockerFile* is declarative file that contains information about **application code** --> **Docker Image** convert into __***Docker container***__
+- *DockerFile* will live in application’s repository with source code.
+- The source code + *DockerFile* will give us a Docker image
 - Docker images are how we share our application
 - An instance of a Docker image is a running container....this is a running instance of your application!
 - Don’t worry if this is not clear yet, we will be playing with images and containers shortly..
+
+### Docker Ecosystem
+- Docker CLI
+- Docker Engine
+- Docker Images
+  - Image is a template for docker container 
+
+### Docker CLI - images
+- ```docker build``` ... - used to build image from Dockerfile
+- ```docker pull``` ... - to pull an image from a repo
+- ```docker run``` ... - to run an image
+- ```-it``` - interactive and gives you command prompt inside of container
+- ```-p``` - port mapping, exposes port from inside container to hos
+- ```-e``` - environment variable
+- ```-v``` - volume mapping
+- ```docker images``` - this will show you all of your images
+- ```docker rmi``` ... - to delete an image (pass in the image name or id)
+  - *Can't delete an image that has a running container (a running instance)*
+- ```docker ps``` - to list running containers
+- Use ```-a``` arg to see stopped containers as well
+- ```docker inspect```... - to inspect a running container
+- ```docker logs``` ... - to view console output of a container
+- ```docker rm ```... - to remove a container
+- ```docker start/stop/restart```... - self explanatory
+- Difference between stop and rm?
+  - A container that's stopped can be restarted, not true if "rm"d (deleted)
+  - If you stop a container, you will still see it in docker ps -a , but not if you used rm
 
 ### Docker image content
 1. Minimal OS layer
