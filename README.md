@@ -367,7 +367,7 @@ strategy - hoping to get the cost/performance benefits the cloud promised
 application before the migration
 - But they found they were often getting ***higher costs and worse performance***, so
 they soon realized that in order to get the benefits of running on the cloud they
-had to **first re-architect** __*their applications to run effectively on the cloud*__
+had to **first re-architect** *their applications to run effectively on the cloud*
 - And hence the term **cloud native** was born - basically it means that if your app is
 cloud native then it is specifically architected to run on the cloud, and you can
 therefore get the benefits of **lower costs/better performance** that the cloud
