@@ -354,3 +354,24 @@ Execution environments are isolated from one another using several container-lik
   - Expose any AWS API through the API Gateway
   - Example: start an AWS Step Function workflow, post a message to SQS
   - Why? Add authentication, deploy publicly, rate control...
+
+
+## Cloud Native
+
+__**Cloud Native - what does that mean?**__
+
+- **Story time**: when the cloud started to become popular in the mid 2000s (2005 or
+so) everyone started to throw their applications on the cloud using the lift and shift
+strategy - hoping to get the cost/performance benefits the cloud promised
+  - *Key takeaway* - lift and shift == migrating to cloud w/ minimal changes to the
+application before the migration
+- But they found they were often getting ***higher costs and worse performance***, so
+they soon realized that in order to get the benefits of running on the cloud they
+had to **first re-architect** __*their applications to run effectively on the cloud*__
+- And hence the term **cloud native** was born - basically it means that if your app is
+cloud native then it is specifically architected to run on the cloud, and you can
+therefore get the benefits of **lower costs/better performance** that the cloud
+promises
+
+
+## Microservices 
