@@ -393,3 +393,10 @@ Amazon.com in a single codebase - a single Github repository perhaps?
 - Can be any language. Developers on the same project can have completely different skill sets if necessary.
 - Loosely coupled to other MS’s. Communicate with other MS’s using standardized protocols. Often a REST API or a message bus.
 - People generally start with coarse grained services and then break them up into smaller and smaller pieces as the time goes by and they know more and more
+
+### Microservices benefits
+- By dividing and conquering w/ microservices, if we want to make a small change to the site, we would just update the microservice that is responsible for that portion of the site
+- And the key here is that we would only need to redeploy that particular microservice, without disturbing/interfering with all the other stuff that powers amazon.com.
+- This is as opposed to using a monolith where we would have to redeploy all of amazon.com for a small change which doesn’t make sense of course.
+- __*One of the clear advantages of using microsen/ices is that it allows us to be ==more agile==*__
+  - *Agile means we can deploy quickly when changes need to be made, and respond to  the needs of the business faster!*
