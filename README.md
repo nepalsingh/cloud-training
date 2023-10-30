@@ -373,6 +373,13 @@ cloud native then it is specifically architected to run on the cloud, and you ca
 therefore get the benefits of **lower costs/better performance** that the cloud
 promises
 
+### Cloud native - characteristics
+- **The Twelve-Factor App**: Baseline best practices for designing & building web applications for portability and resilience.
+  - [Reference: https://12factor.net/](https://12factor.net/)
+- **Microservices**: Independently deployable services that do one thing well (Single Responsibility Principle).
+- **Self-Service Infrastructure**: Platforms for rapid, repeatable, and consistent provisioning of ap^ environments and backing services.
+- **API-based Collaboration**: Published and versioned APIs that allow interaction between services.
+- **Anti-Fragile**: Systems that are resilient to stress and failure.
 
 ## Microservices 
 __**Microservices + Monolith - definition**__
@@ -400,3 +407,11 @@ Amazon.com in a single codebase - a single Github repository perhaps?
 - This is as opposed to using a monolith where we would have to redeploy all of amazon.com for a small change which doesn’t make sense of course.
 - __*One of the clear advantages of using microsen/ices is that it allows us to be <strong>more agile</strong>*__
   - *Agile means we can deploy quickly when changes need to be made, and respond to  the needs of the business faster!*
+
+
+## Containers vs VMs revisited
+- Both VMs and containers are essentially *"wrappers"* around our applications making it easier to run our apps on the cloud
+- Containers allow us to share a copy of the OS between applications
+*	Apps running inside a VM each have their own copy of the OS. Hence, VM’s are heavier
+- Containers are lightweight, low overhead, and we can run more apps on a single server with containers
+*Sidenote: VM’s offer better security than containers due to OS isolation*
