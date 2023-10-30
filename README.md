@@ -375,3 +375,21 @@ promises
 
 
 ## Microservices 
+__**Microservices + Monolith - definition**__
+- To best define microservices, I think it helps to first compare it to the term
+monolith
+- A monolithic application is basically one gigantic application sharing a single
+codebase (think: a single Git repository)
+- What challenges would we face if for example, we were running all of
+Amazon.com in a single codebase - a single Github repository perhaps?
+
+### Monolith - solution...
+- By breaking something down into more manageable pieces - microservices - we can better tackle the problem and deal with complexity.
+- Microservices are the “smaller pieces” of the larger application
+
+### Microservices characteristics
+- Small, fully independent and autonomous application. Isolated from other MS’s, maybe even with own database.
+- Responsible for a logical part of a larger application “ecosystem”. Singular responsibility.
+- Can be any language. Developers on the same project can have completely different skill sets if necessary.
+- Loosely coupled to other MS’s. Communicate with other MS’s using standardized protocols. Often a REST API or a message bus.
+- People generally start with coarse grained services and then break them up into smaller and smaller pieces as the time goes by and they know more and more
