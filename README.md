@@ -453,8 +453,36 @@ Amazon.com in a single codebase - a single Github repository perhaps?
   - A container that's stopped can be restarted, not true if "rm"d (deleted)
   - If you stop a container, you will still see it in docker ps -a , but not if you used rm
 
+#### Docker CLI - port mapping
+- By default, when you run a container with docker run, it doesn't publish any of it's ports to the outside world - i.e., your localhost when running Docker Desktop
+- Which makes sense because a container is it's own isolated environment!
+- So, how do we expose that internal port?
+- Through the '-p' flag (p for publish) when we do a docker run
+- So, if we do docker run ~p 8080:80 that says map port 80 in the container to
+- port 8080 on the Docker host - your localhost in this case
+- ```docker run -p``` [host_port]:[container_port] [docker_image]
+  - Example: ```docker run -it -p 27017:27017 mongo:4.0 /bin/bash```
+
+
+
+
 ### Docker image content
 1. Minimal OS layer
 2. Install apache and other component 
 3. App related :*artifacts*
 4. bootstrapping the :**app**
+
+
+### Networks in Docker
+- You can create Docker networks to allow containers to easily communicate.
+- **Types**:
+  - Bridge (default) - this one is created by Docker and containers go here by default. Not recommended for production. No container communication by name.
+  - Bridge (user-defined) - Recommended for standalone containers running on the sam host. Containers can communicate by name.
+  - Overlay - allows networking across Docker hosts. Works with Swarm.
+- Networks are managed with the docker network ... commands
+  - **Docker network** will show all commands,
+- example **`docker nework ls`** will display all existing networks including 3 pre-defined networks.
+- Containers are put into a network with the `--network` option in the docker run command.
+- Existing containers can be put into a network with **docker network connect <network name> <container name>**
+
+
