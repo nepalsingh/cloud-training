@@ -481,8 +481,35 @@ Amazon.com in a single codebase - a single Github repository perhaps?
   - Overlay - allows networking across Docker hosts. Works with Swarm.
 - Networks are managed with the docker network ... commands
   - **Docker network** will show all commands,
-- example **`docker nework ls`** will display all existing networks including 3 pre-defined networks.
+- example **`docker network ls`** will display all existing networks including 3 pre-defined networks.
 - Containers are put into a network with the `--network` option in the docker run command.
 - Existing containers can be put into a network with **docker network connect <network name> <container name>**
 
 
+## Excercise for docker
+- List the containers `docker ps`
+- Create the application network `docker network create net_wp` 
+- List of the network `docker network ls`
+```
+NETWORK ID     NAME       DRIVER    SCOPE
+f21703de9a2f   bridge     bridge    local
+fc97393ba5b9   host       host      local
+a254a9058b07   minikube   bridge    local
+381bd4967dae   net_wp     bridge    local
+6fdcbcccde0c   none       null      local
+```
+- Create mysql Docker container `docker run --name wp-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=wp -e MYSQL_USER=user -e MYSQL_PASSWORD=admin --net=net_wp -d mysql:latest`
+- Creating wp web container `docker run --name wordpress -e WORDPRESS_DB_HOST=wp-mysql:3306 -e WORDPRESS_DB_USER=user -e WORDPRESS_DB_PASSWORD=admin -e WORDPRESS_DB_NAME=wp --net=net_wp -p 8081:80 -d wordpress:latest`
+
+
+### Dockerfile commands
+A sampling of commands you may see in a Dockerfile:
+- `FROM` - which image you want to inherit from 
+- `RUN` - Run a Linux command in a new layer. The command is dependent on which shell is in the image.
+- `EXPOSE` - Tells what ports this container will listen on. Does not actually publish a port, but is rather like documentation.
+- `COPY` - copy files into the container.
+- `ADD` - copy files into the container (same as COPY, but supports 2 other sources 
+        - additional URL source, tar extraction from local)
+- `ENV` - Define environment variable
+- `ENTRYPOINT` - The command to be run when container is started. This is inherited from a base image.
+- `CMD` - provides defaults to be run after the ENTRYPOINT. Also inherited from the base image
