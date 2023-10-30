@@ -412,6 +412,7 @@ Amazon.com in a single codebase - a single Github repository perhaps?
 ## Containers vs VMs revisited
 - Both VMs and containers are essentially *"wrappers"* around our applications making it easier to run our apps on the cloud
 - Containers allow us to share a copy of the OS between applications
-*	Apps running inside a VM each have their own copy of the OS. Hence, VM’s are heavier
+-	Apps running inside a VM each have their own copy of the OS. Hence, VM’s are heavier
 - Containers are lightweight, low overhead, and we can run more apps on a single server with containers
+  
 *Sidenote: VM’s offer better security than containers due to OS isolation*
