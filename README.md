@@ -513,3 +513,35 @@ A sampling of commands you may see in a Dockerfile:
 - `ENV` - Define environment variable
 - `ENTRYPOINT` - The command to be run when container is started. This is inherited from a base image.
 - `CMD` - provides defaults to be run after the ENTRYPOINT. Also inherited from the base image
+
+
+## Docker Compose
+
+In the last lab, we saw how to create a docker network manually. Imagine if we had more than 2 containers - the command could get quite long!
+Is there a simpler, cleaner way to create a network? Answer: **yes, with Docker Compose**
+
+- Compose is a lightweight way to run your application without the overhead of a Swarm or Kubernetes application.
+- Compose is a tool for running multiple related containers together with one command. It is included **with Docker by default**.
+- So, you don’t have to start each container separately
+- You specify **all the configurations** in **docker-compose.yml** file.
+- This is another example of **infrastructure-as-code!**
+- Compose creates a new user defined bridge (just like we did manually in networks lab) network for your containers
+- This way they can communicate with each other **by name**.
+- You can refer to an existing image in Docker Hub, on your local machine, a private repo, or you can refer to a Dockerfile location, and **Compose will build the image for you before running the container**.
+- To start up your app, use `docker-compose up -d`
+- To stop it, use `docker-compose down`
+- It will automatically look at the **docker-compose.yml** file in the current folder location
+
+
+### Interactive Shell
+Containers are mostly intended to run as headless without interaction.
+- headless == no interface, not bash shell, etc.
+- Sometimes however you may want to interact and provide input
+- To interact, you can run attached (or attach later) to interact with it.
+- **`docker run -it <image-name>/bin/sh`**
+- **`docker attach <container-name>`**
+- You can now get it’s output (like with docker logs), provide input if necessary.
+- If you attach at run then to detach without stopping it, use the detach sequence (hold CTRL, press p then q), CTRL+ C will end the container process.
+- We will see how to ‘login’ in the container next, and how to install software
+
+
