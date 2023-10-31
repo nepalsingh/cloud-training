@@ -545,3 +545,34 @@ Containers are mostly intended to run as headless without interaction.
 - We will see how to ‘login’ in the container next, and how to install software
 
 
+### Multi-stage builds - stages
+- A Dockerfile is multi-stage if you see **multiple FROM** statements:
+- This example below has 2 distinct stages
+- The second stage references the first stage by using `COPY -from=0`
+  - `0 is the first stage`
+  - this says just grab what I need from the Oth (first) stage, then put it inside an Alpine OS	/
+
+```
+# syntax=docker/dockerfile:1
+
+FROM golang:1.16
+
+WORKDIR /go/src/github.com/alexellis/href-counter/
+
+RUN go get -d -v golang.org/x/net/html
+
+COPY app.go ./
+
+RUN CGO_ENABLED=0 Î00 =linux go build -a -installsuffix ego -o app .
+
+FROM alpine:latest
+
+RUN apk —no-cache add ca-certificates
+
+WORKDIR /root/
+
+COPY —from=0 /go/src/github.com/alexellis/href-counter/app ./
+
+CMD ["./app"]
+```
+
