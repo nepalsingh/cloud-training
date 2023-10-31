@@ -576,3 +576,32 @@ COPY —from=0 /go/src/github.com/alexellis/href-counter/app ./
 CMD ["./app"]
 ```
 
+### Bind mount versus volumes
+- Volumes are stored in a part of the host filesystem which is managed by Docker (`/var/lib/docker/volumes/` on Linux). Non-Docker processes should not modify this part of the filesystem. Volumes are the best way to persist data in Docker.
+- Bind mounts may be stored anywhere on the host system. They may even be important system files or directories. Non-Docker processes on the Docker host or a Docker container can modify them at any time.
+- Per the docs: “Bind mounts have limited functionality compared to volumes” - [https://docs.docker.com/storage/bind-mounts/](https://docs.docker.com/storage/bind-mounts/)
+- Volumes are managed by Docker
+- Volumes - remember they put stuff inside the space that Docker manages f
+- But bind mounts put stuff inside the actual host machine.- NOT inside the space managed by Docker
+  - In other words, if you are running Docker Desktop on a Mac, a bind mount will create a folder on your Mac OS - so you can actually see the bind mount in Finder (same for Windows)
+
+### Docker (Named) Volume vs Bind Mount Syntax
+- difference is very subtle
+- with named volumes, we just specify a name
+- with bind mounts, we specify a path on the host
+- backslash is to allow for new lines
+- NAMED DOCKER VOLUMES:
+```
+docker run \
+--name=nginxtest \
+-v nginx-vol:/usr/share/nginx/html \
+nginx: latest
+```
+- BIND MOUNTS:
+```
+docker run —name devtest \
+-v "$(pwd)"/target :/app \
+nginx: latest
+```
+
+
