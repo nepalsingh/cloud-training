@@ -604,4 +604,114 @@ docker run —name devtest \
 nginx: latest
 ```
 
+## AWS Step Functions
+- Build serverless visual workflow to orchestrate your **Lambda functions**
+- However, lambdas are not the only AWS service you can use step functions with
+- Features: sequence, parallel, conditions, timeouts, error handling,
+- Possibility of implementing human approval feature - i.e. if human says “yes” then go forward
+- However, lambdas are not the only AWS service you can use step functions with
+  - Can integrate with ECS, On-premise servers, API Gateway, SQS queues, etc.
+- Use cases: order fulfillment, data processing, web applications, any workflow
 
+
+
+
+## KubeCTL inst
+```
+training@ip-172-31-21-113:~/cloud-training/dockerlabs/k8s$ kubectl get all
+NAME               READY   STATUS    RESTARTS   AGE
+pod/my-nginx-pod   1/1     Running   0          39s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   286d
+
+kubectl describe pods my-nginx-pod
+Name:             my-nginx-pod
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Wed, 01 Nov 2023 18:51:53 +0000
+Labels:           app=nginx
+Annotations:      <none>
+Status:           Running
+IP:               172.17.0.3
+IPs:
+  IP:  172.17.0.3
+Containers:
+  nginx-container:
+    Container ID:   docker://91be7094b36936f13a1d5e3991902a277971120741b5d2ed0d7bb03d136f79e6
+    Image:          nginx:1.17.0
+    Image ID:       docker-pullable://nginx@sha256:bdbf36b7f1f77ffe7bd2a32e59235dff6ecf131e3b6b5b96061c652f30685f3a
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Wed, 01 Nov 2023 18:51:57 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-78zn6 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-78zn6:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  2m55s  default-scheduler  Successfully assigned default/my-nginx-pod to minikube
+  Normal  Pulling    2m54s  kubelet            Pulling image "nginx:1.17.0"
+  Normal  Pulled     2m51s  kubelet            Successfully pulled image "nginx:1.17.0" in 3.414333128s
+  Normal  Created    2m51s  kubelet            Created container nginx-container
+  Normal  Started    2m51s  kubelet            Started container nginx-container
+
+
+```
+
+## K8s - declarative model
+- K8s uses infrastructure as code concepts
+- Infrastructure as code (laC) means managing your IT infrastructure using configuration files.
+- Declarative vs imperative:
+  - Declarative is like asking someone to bake a cake and giving them the ingredients without a recipe - the baker will figure it out
+  - Imperative is like giving ingredients + recipe - telling baker exactly what to do. i.e. here are the exact steps you need to take to bake a cake
+
+### K8s Replicasets
+- What is self healing? When k8s automatically spins up a new pod when on goes down
+- Replicasets and deployments are the two ways to achieve self-healing within
+- When creating a Replicaset, we don’t need to define the pods as a separate resource - i.e. as a separate pod.yaml file.
+- Pods are created within the replicaset and are “owned” by that replicaset
+- selector - specifies how to identify Pods it can acquire
+
+
+### K8s -probe types 
+- We will focus on 2 primary probe types: **liveness** and **readiness**
+- **Liveness** probes basically are a check that runs periodically (you define how often) and asks your application are you alive, are you alive, etc.?
+- If the answer is ”no” k8s will **restart** your pod since that should bring your container/application pod back to life
+- If the answer is “yes” nothing will happen since your pod is healthy
+- **Readiness** probes are similar except they are basically checks to see if your pod is ready to accept traffic
+- Sometimes our applications need to load large data or configuration files during startup, or depend on external services after startup.
+- In such cases, you don't want to kill the application, but you don't want to send it requests either
+- So, readiness probes will **prevent traffic** from being sent to pods that are not ready to accept it.
+
+#### K8s - Parameters for liveness/readiness probes
+- Both readiness and liveness probes have additional parameters
+- They are the same exact parameters for both probes
+- And if you don’t specify these parameters they do have default values as well:
+- ÇinitialDelaySeconds: Probes start running after jnitialDelaySeconds after container is started (default: 0)
+- periodSeconds: How often probe should run (default: 10)
+- timeoutSeconds: Probe timeout (default: 1)
+- successThreshold: Required number of successful probes to mark container healthy/ready (default: 1)
+- failureThreshold: When a probe fails, it will try failureThreshold times before deeming unhealthy/not ready (default: 3)
