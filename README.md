@@ -725,15 +725,21 @@ Events:
 |An individual task will not auto-heal | An indidual pod will not auto-heal|
 |Service - maintains n number of tasks | Replicaset - maintains n number of pods|
 |An Attrribute in Service which links the ALB| Service -- to Expose out (like a load balance) |
+---
+title: EKS cluster flow 
+---
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": false}} }%%
-flowchart TD
-  cluster[" `this is __**Cluster**__`"]
-  services["`**Multiple Services**`"]
-  tasks["`**Tasks** (with one task definition), <br /> can be multiple number of tasks`"]
-  target["`These tasks gets registered to the **Target Group** <br /> configured at the Service level.`"]
-  cluster --> services --> tasks --> target
 
+flowchart TD
+  cluster["`this is **Cluster** `"]
+  services["`**Multiple Services**`"]
+  tasks["`**Tasks** (with one task definition), 
+  can be multiple number of tasks`"]
+  target["`These tasks gets registered to the **Target Group** 
+  configured at the Service level.`"]
+
+  cluster --> services --> tasks --> target
 
 ```
