@@ -725,11 +725,12 @@ Events:
 |An individual task will not auto-heal | An indidual pod will not auto-heal|
 |Service - maintains n number of tasks | Replicaset - maintains n number of pods|
 |An Attrribute in Service which links the ALB| Service -- to Expose out (like a load balance) |
+
+
+```mermaid
 ---
 title: EKS cluster flow 
 ---
-
-```mermaid
 %%{init: {"flowchart": {"htmlLabels": false}} }%%
 
 flowchart TD
