@@ -741,7 +741,6 @@ flowchart TD
   tasks12["`**Tasks** (with one task definition)] 
   tasks21["`**Tasks** (with one task definition)] 
   tasks22["`**Tasks** (with one task definition)] 
-  <!-- can be multiple number of tasks`"] -->
   target11["`These tasks gets registered to the **Target Group** `"]
   target12["`These tasks gets registered to the **Target Group** `"]
   target13["`These tasks gets registered to the **Target Group** `"]
