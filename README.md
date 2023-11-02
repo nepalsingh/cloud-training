@@ -735,8 +735,7 @@ title: EKS cluster flow
 
 flowchart TD
   cluster["`this is **Cluster** `"]
-  services1["`**Web Services**`"]
-  services2["`**API Services**`"]
+  services1["`**Web Services**`"] 
   tasks11["`**Tasks** (with one task definition)'"] 
   tasks12["`**Tasks** (with one task definition)'"] 
   tasks21["`**Tasks** (with one task definition)'"] 
@@ -748,12 +747,11 @@ flowchart TD
   target22["`These tasks gets registered to the **Target Group** `"]
   target23["`These tasks gets registered to the **Target Group** `"]
 
-  cluster --> services1 
-  cluster --> services2 
+  cluster --> services1  
   services1 --> tasks11 
   services1 --> tasks12 
-  services2 --> tasks21 
-  services2 --> tasks22 
+  services1 --> tasks21 
+  services1 --> tasks22 
   tasks11 -->  target11
   tasks12 -->  target12
   tasks11 -->  target13
