@@ -715,3 +715,22 @@ Events:
 - timeoutSeconds: Probe timeout (default: 1)
 - successThreshold: Required number of successful probes to mark container healthy/ready (default: 1)
 - failureThreshold: When a probe fails, it will try failureThreshold times before deeming unhealthy/not ready (default: 3)
+
+
+## EKS vs ECS
+
+|ECS|EKS|
+|:---|:---|
+|Task - contains 1 container typically |Pod - contains 1 contaner typically|
+|An individual task will not auto-heal | An indidual pod will not auto-heal|
+|Service - maintains n number of tasks | Replicaset - maintains n number of pods|
+|An Attrribute in Service which links the ALB| Service -- to Expose out (like a load balance) |
+
+```mermaid
+flowchart LR
+  cluster[" this is __**Cluster**__"]
+  services["**Multiple Services**"]
+  tasks["**Tasks** (with one task definition), can be multiple number of tasks"]
+  target["These tasks gets registered to the **Target Group** configured at the Service level."]
+
+```
