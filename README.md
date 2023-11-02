@@ -728,9 +728,11 @@ Events:
 
 ```mermaid
 flowchart LR
-  cluster[" this is __**Cluster**__"]
-  services["**Multiple Services**"]
-  tasks["**Tasks** (with one task definition), can be multiple number of tasks"]
-  target["These tasks gets registered to the **Target Group** configured at the Service level."]
+  cluster[" `this is __**Cluster**__`"]
+  services["`**Multiple Services**`"]
+  tasks["`**Tasks** (with one task definition), <br /> can be multiple number of tasks`"]
+  target["`These tasks gets registered to the **Target Group** <br /> configured at the Service level.`"]
+  cluster --> services --> tasks --> target
+
 
 ```
