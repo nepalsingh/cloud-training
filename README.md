@@ -735,21 +735,31 @@ title: EKS cluster flow
 
 flowchart TD
   cluster["`this is **Cluster** `"]
-  services["`**Multiple Services**`"]
-  tasks["`**Tasks** (with one task definition)] 
+  services1["`**Web Services**`"]
+  services2["`**API Services**`"]
+  tasks11["`**Tasks** (with one task definition)] 
+  tasks12["`**Tasks** (with one task definition)] 
+  tasks21["`**Tasks** (with one task definition)] 
+  tasks22["`**Tasks** (with one task definition)] 
   <!-- can be multiple number of tasks`"] -->
-  target["`These tasks gets registered to the **Target Group** 
-  configured at the Service level.`"]
+  target11["`These tasks gets registered to the **Target Group** `"]
+  target12["`These tasks gets registered to the **Target Group** `"]
+  target13["`These tasks gets registered to the **Target Group** `"]
+  target21["`These tasks gets registered to the **Target Group** `"]
+  target22["`These tasks gets registered to the **Target Group** `"]
+  target23["`These tasks gets registered to the **Target Group** `"]
 
-  cluster --> services 
-  cluster --> services 
-  services --> tasks 
-  services --> tasks 
-  services --> tasks 
-  tasks -->  target
-  tasks -->  target
-  tasks -->  target
-  tasks -->  target
-  tasks -->  target
+  cluster --> services1 
+  cluster --> services2 
+  services1 --> tasks11 
+  services1 --> tasks12 
+  services2 --> tasks21 
+  services2 --> tasks22 
+  tasks11 -->  target11
+  tasks12 -->  target12
+  tasks11 -->  target13
+  tasks21 -->  target21
+  tasks22 -->  target22
+  tasks22 -->  target23
 
 ```
