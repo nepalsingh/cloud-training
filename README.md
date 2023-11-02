@@ -727,7 +727,8 @@ Events:
 |An Attrribute in Service which links the ALB| Service -- to Expose out (like a load balance) |
 
 ```mermaid
-flowchart LR
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart TD
   cluster[" `this is __**Cluster**__`"]
   services["`**Multiple Services**`"]
   tasks["`**Tasks** (with one task definition), <br /> can be multiple number of tasks`"]
