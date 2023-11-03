@@ -928,7 +928,7 @@ sequenceDiagram
 
 ```mermaid
 ---
-title: Culture of Continual Experimentation & Learning
+title: Continual Experimentation & Learning
 ---
 
 sequenceDiagram
@@ -939,9 +939,7 @@ sequenceDiagram
 
 ```
 
-
-
-Reference: [Source: Gene Kim]('https://itrevolution.com/the-three-ways-principles-underpinning-devops/')
+Reference: [Source: Gene Kim https://itrevolution.com/the-three-ways-principles-underpinning-devops/](https://itrevolution.com/the-three-ways-principles-underpinning-devops/)
 
 - Culture that fosters:
 - Continual experimentation, risk-taking, and learning from failure
