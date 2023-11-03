@@ -770,9 +770,105 @@ flowchart LR
   app2["App - B"]
   service1[" Service One "]
   service2[" Service Two "]
-  taskdef1[" Task Definition 1 for <br /> container configuration"]
-  taskdef2[" Task Definition 2 for <br /> container configuration"]
+  taskdef1[" Task Definition 1 for <br /> Container Configuration"]
+  taskdef2[" Task Definition 2 for <br /> Container Configuration"]
   app1 --> service1 --> taskdef1
   app2 --> service2 --> taskdef2
+
+```
+
+## Tips for load balancer configuration
+- network perperspective
+  - securty group
+- Permission perspective
+  - IAM roles setup
+  - Policy configuration
+
+
+## Lab for 24 for EKS 
+### the YAML 
+
+```
+# An example of ClusterConfig with a normal nodegroup and a Fargate profile.
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: npls-fargate-cluster
+  region: us-west-2
+
+  
+vpc:
+  id: "vpc-04884555a196fcc03"
+  cidr: "10.0.0.0/16"
+  subnets: # FARGATE Must be Private
+    private:
+      us-west-2a:
+        id: "subnet-0a1f7c28c6be206b6"  
+        cidr: "10.0.11.0/24" 
+      us-west-2b:
+        id: "subnet-00eb1479dca749d62" 
+        cidr: "10.0.12.0/24"
+      us-west-2c:
+        id: "subnet-098f5f0f491115bb4"
+        cidr: "10.0.13.0/24"        
+
+      
+fargateProfiles:
+  - name: fp-default
+    selectors:
+      # All workloads in the "default" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: default
+      # All workloads in the "kube-system" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: kube-system
+    subnets: [ "subnet-0a1f7c28c6be206b6", "subnet-00eb1479dca749d62", "subnet-098f5f0f491115bb4" ]
+    
+  - name: fp-dev
+    selectors:
+      # All workloads in the "dev" Kubernetes namespace matching the following
+      # label selectors will be scheduled onto Fargate:
+      - namespace: dev        
+    subnets: [ "subnet-0a1f7c28c6be206b6", "subnet-00eb1479dca749d62", "subnet-098f5f0f491115bb4" ]
+
+
+```
+
+```
+[ec2-user@ip-10-0-2-108 eks-lab]$ eksctl create cluster -f cluster-fargate-npls.yaml 
+2023-11-03 18:32:29 [ℹ]  eksctl version 0.164.0
+2023-11-03 18:32:29 [ℹ]  using region us-west-2
+2023-11-03 18:32:29 [✔]  using existing VPC (vpc-04884555a196fcc03) and subnets (private:map[us-west-2a:{subnet-0a1f7c28c6be206b6 us-west-2a 10.0.11.0/24 0 } us-west-2b:{subnet-00eb1479dca749d62 us-west-2b 10.0.12.0/24 0 } us-west-2c:{subnet-098f5f0f491115bb4 us-west-2c 10.0.13.0/24 0 }] public:map[])
+2023-11-03 18:32:29 [!]  custom VPC/subnets will be used; if resulting cluster doesn't function as expected, make sure to review the configuration of VPC/subnets
+2023-11-03 18:32:29 [ℹ]  using Kubernetes version 1.27
+2023-11-03 18:32:29 [ℹ]  creating EKS cluster "npls-fargate-a2" in "us-west-2" region with Fargate profile
+2023-11-03 18:32:29 [ℹ]  will create a CloudFormation stack for cluster itself and 0 nodegroup stack(s)
+2023-11-03 18:32:29 [ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
+2023-11-03 18:32:29 [ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-west-2 --cluster=npls-fargate-a2'
+2023-11-03 18:32:29 [ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "npls-fargate-a2" in "us-west-2"
+2023-11-03 18:32:29 [ℹ]  CloudWatch logging will not be enabled for cluster "npls-fargate-a2" in "us-west-2"
+2023-11-03 18:32:29 [ℹ]  you can enable it with 'eksctl utils update-cluster-logging --enable-types={SPECIFY-YOUR-LOG-TYPES-HERE (e.g. all)} --region=us-west-2 --cluster=npls-fargate-a2'
+2023-11-03 18:32:29 [ℹ]  
+2 sequential tasks: { create cluster control plane "npls-fargate-a2", 
+    2 sequential sub-tasks: { 
+        wait for control plane to become ready,
+        create fargate profiles,
+    } 
+}
+2023-11-03 18:32:29 [ℹ]  building cluster stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:32:29 [ℹ]  deploying stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:32:59 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:33:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:34:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:35:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:36:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:37:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:38:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:39:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:40:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+
+
 
 ```
