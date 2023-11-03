@@ -918,7 +918,8 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 ```mermaid
 
   sequenceDiagram  
-    Development -->> Operations: <Handshake emoji>
+    Development ->> Operations: :fist_left: :fist_right:
+    Operations -->> Development: :fist_left: :fist_right:
 
 ```
 - Development and operation work together 
