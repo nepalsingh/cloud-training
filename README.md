@@ -932,14 +932,14 @@ title: Continual Experimentation & Learning
 ---
 
 sequenceDiagram
-  Development ->> Operations: Deployment
-  loop daily Deployment
+  loop Daily Deployment
+    Development ->> Operations: Deployment
     Operations --> Development: feedback
   end
 
 ```
 
-Reference: [Source: Gene Kim https://itrevolution.com/the-three-ways-principles-underpinning-devops/](https://itrevolution.com/the-three-ways-principles-underpinning-devops/)
+Reference from Gene Kim Source: [https://itrevolution.com/the-three-ways-principles-underpinning-devops/](https://itrevolution.com/the-three-ways-principles-underpinning-devops/)
 
 - Culture that fosters:
 - Continual experimentation, risk-taking, and learning from failure
