@@ -915,7 +915,7 @@ title: The new deployment process
 ---
 
 sequenceDiagram
-  rect rgb(200, 150, 255)
+  rect rgb(33, 69, 99)
     Development ->> Operations: Deployment
     Operations -->> Development: feedback
   end
