@@ -912,8 +912,9 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 ```mermaid
 
   sequenceDiagram  
-    Development ->> Operations: :fist_left: :fist_right:
-    Operations -->> Development: :fist_left: :fist_right:
+  FONTAWESOME["fa:fa-gitlab"]
+    Development ->> Operations: GITLAB[":monkey:"]
+    Operations -->> Development: GITLAB[":monkey:"]
 
 ```
 - Development and operation work together 
@@ -922,6 +923,9 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 ### DevSecOps - The Three Ways
 
 ```mermaid
+---
+title: Culture of Continual Experimentation & Learning
+---
 
 sequenceDiagram
   Development ->> Operations: Deployment
@@ -931,9 +935,7 @@ sequenceDiagram
 
 ```
 
-<!-- ---
-title: The Third Way: Culture of Continual Experimentation and Learning
---- -->
+
 
 Reference: [Source: Gene Kim]('https://itrevolution.com/the-three-ways-principles-underpinning-devops/')
 
