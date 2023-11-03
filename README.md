@@ -930,9 +930,7 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 ### DevSecOps - The Three Ways
 
 ```mermaid
----
-title: The Third Way: Culture of Continual Experimentation & Learning
----
+
 
   sequenceDiagram  
     Development -->> Operations: Deployment
