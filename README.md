@@ -760,3 +760,16 @@ flowchart TD
   tasks22 -->  target23
 
 ```
+
+```mermaid
+---
+title: Application Service Task 
+---
+flowchart LR
+  app1["App-A"]
+  app2["App-B"]
+  service1[" Service1 "]
+  taskdef1[" Task Definition for container"]
+  app1 --> service1 --> taskdef1
+
+```
