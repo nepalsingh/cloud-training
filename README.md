@@ -910,9 +910,11 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 ### DevSecOps -- The New Way
 
 ```mermaid
-
+---
+title: The new deployment process
+---
   sequenceDiagram
-    box rgb(33,69,99) Deployment 
+    box rgb(33,69,99) 
     Development ->> Operations: Deployment
     Operations -->> Development: feedback
     end
