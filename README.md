@@ -25,7 +25,7 @@ This is COHORT 5 cloud training
 
 ## IAM policy
 - Inline or manage policy
-- Deny always Wins instead of ALLOW 
+- DENY always Wins over ALLOW 
 - Policy lives within AWS account.
 
 
