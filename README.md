@@ -915,7 +915,7 @@ title: The new deployment process
 ---
 
 sequenceDiagram
-  box rgb(33,69,99) 
+  box purple
     Development ->> Operations: Deployment
     Operations -->> Development: feedback
   end
