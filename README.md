@@ -433,22 +433,22 @@ Amazon.com in a single codebase - a single Github repository perhaps?
   - Image is a template for docker container 
 
 ### Docker CLI - images
-- ```docker build``` ... - used to build image from Dockerfile
-- ```docker pull``` ... - to pull an image from a repo
-- ```docker run``` ... - to run an image
-- ```-it``` - interactive and gives you command prompt inside of container
-- ```-p``` - port mapping, exposes port from inside container to hos
-- ```-e``` - environment variable
-- ```-v``` - volume mapping
-- ```docker images``` - this will show you all of your images
-- ```docker rmi``` ... - to delete an image (pass in the image name or id)
+- `docker build` ... - used to build image from Dockerfile
+- `docker pull` ... - to pull an image from a repo
+- `docker run` ... - to run an image
+- `-it` - interactive and gives you command prompt inside of container
+- `-p` - port mapping, exposes port from inside container to hos
+- `-e` - environment variable
+- `-v` - volume mapping
+- `docker images` - this will show you all of your images
+- `docker rmi` ... - to delete an image (pass in the image name or id)
   - *Can't delete an image that has a running container (a running instance)*
-- ```docker ps``` - to list running containers
-- Use ```-a``` arg to see stopped containers as well
-- ```docker inspect```... - to inspect a running container
-- ```docker logs``` ... - to view console output of a container
-- ```docker rm ```... - to remove a container
-- ```docker start/stop/restart```... - self explanatory
+- `docker ps` - to list running containers
+- Use `-a` arg to see stopped containers as well
+- `docker inspect`... - to inspect a running container
+- `docker logs` ... - to view console output of a container
+- `docker rm `... - to remove a container
+- `docker start/stop/restart`... - self explanatory
 - Difference between stop and rm?
   - A container that's stopped can be restarted, not true if "rm"d (deleted)
   - If you stop a container, you will still see it in docker ps -a , but not if you used rm
@@ -552,27 +552,19 @@ Containers are mostly intended to run as headless without interaction.
   - `0 is the first stage`
   - this says just grab what I need from the Oth (first) stage, then put it inside an Alpine OS	/
 
-```
+```Dockerfile
 # syntax=docker/dockerfile:1
 
 FROM golang:1.16
-
 WORKDIR /go/src/github.com/alexellis/href-counter/
-
 RUN go get -d -v golang.org/x/net/html
-
 COPY app.go ./
-
 RUN CGO_ENABLED=0 Î00 =linux go build -a -installsuffix ego -o app .
 
 FROM alpine:latest
-
 RUN apk —no-cache add ca-certificates
-
 WORKDIR /root/
-
 COPY —from=0 /go/src/github.com/alexellis/href-counter/app ./
-
 CMD ["./app"]
 ```
 
@@ -591,6 +583,7 @@ CMD ["./app"]
 - with bind mounts, we specify a path on the host
 - backslash is to allow for new lines
 - NAMED DOCKER VOLUMES:
+- 
 ```
 docker run \
 --name=nginxtest \
@@ -617,7 +610,8 @@ nginx: latest
 
 
 ## KubeCTL inst
-```
+
+```log
 training@ip-172-31-21-113:~/cloud-training/dockerlabs/k8s$ kubectl get all
 NAME               READY   STATUS    RESTARTS   AGE
 pod/my-nginx-pod   1/1     Running   0          39s
@@ -788,7 +782,7 @@ flowchart LR
 ## Lab for 24 for EKS 
 ### the YAML 
 
-```
+```yaml
 # An example of ClusterConfig with a normal nodegroup and a Fargate profile.
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -836,7 +830,7 @@ fargateProfiles:
 
 ```
 
-```
+```log
 [ec2-user@ip-10-0-2-108 eks-lab]$ eksctl create cluster -f cluster-fargate-npls.yaml 
 2023-11-03 18:32:29 [ℹ]  eksctl version 0.164.0
 2023-11-03 18:32:29 [ℹ]  using region us-west-2
@@ -929,7 +923,7 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 
 ```mermaid
 ---
-title: The Third Way: Culture of Continual Experimentation & Learning
+title: The Third Way: Culture of Continual Experimentation and Learning
 ---
 
   sequenceDiagram
