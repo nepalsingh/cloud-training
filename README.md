@@ -868,7 +868,26 @@ fargateProfiles:
 2023-11-03 18:38:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
 2023-11-03 18:39:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
 2023-11-03 18:40:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
-
+2023-11-03 18:41:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:42:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:43:30 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-cluster"
+2023-11-03 18:45:31 [ℹ]  creating Fargate profile "npls-fp-default" on EKS cluster "npls-fargate-a2"
+2023-11-03 18:49:48 [ℹ]  created Fargate profile "npls-fp-default" on EKS cluster "npls-fargate-a2"
+2023-11-03 18:49:48 [ℹ]  creating Fargate profile "npls-fp-dev" on EKS cluster "npls-fargate-a2"
+2023-11-03 18:50:06 [ℹ]  created Fargate profile "npls-fp-dev" on EKS cluster "npls-fargate-a2"
+2023-11-03 18:50:36 [ℹ]  "coredns" is now schedulable onto Fargate
+2023-11-03 18:51:39 [ℹ]  "coredns" is now scheduled onto Fargate
+2023-11-03 18:51:39 [ℹ]  "coredns" pods are now scheduled onto Fargate
+2023-11-03 18:51:39 [ℹ]  waiting for the control plane to become ready
+2023-11-03 18:51:39 [✔]  saved kubeconfig as "/home/ec2-user/.kube/config"
+2023-11-03 18:51:39 [ℹ]  no tasks
+2023-11-03 18:51:39 [✔]  all EKS cluster resources for "npls-fargate-a2" have been created
+2023-11-03 18:51:40 [ℹ]  kubectl command should work with "/home/ec2-user/.kube/config", try 'kubectl get nodes'
+2023-11-03 18:51:40 [✔]  EKS cluster "npls-fargate-a2" in "us-west-2" region is ready
+[ec2-user@ip-10-0-2-108 eks-lab]$ **kubectl get nodes**
+NAME                                               STATUS   ROLES    AGE   VERSION
+fargate-ip-10-0-11-6.us-west-2.compute.internal    Ready    <none>   47s   v1.27.6-eks-f8587cb
+fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27.6-eks-f8587cb
 
 
 ```
