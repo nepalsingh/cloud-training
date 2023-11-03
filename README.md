@@ -913,11 +913,12 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 ---
 title: The new deployment process
 ---
-  sequenceDiagram
-    box rgb(33,69,99) 
+
+sequenceDiagram
+  box rgb(33,69,99) 
     Development ->> Operations: Deployment
     Operations -->> Development: feedback
-    end
+  end
 
 ```
 - Development and operation work together 
