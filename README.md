@@ -934,7 +934,7 @@ title: Continual Experimentation & Learning
 sequenceDiagram
   loop Daily Deployment
     Development ->> Operations: Deployment
-    Operations --> Development: feedback
+    Operations -->> Development: feedback
   end
 
 ```
