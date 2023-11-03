@@ -12,7 +12,7 @@ This is COHORT 5 cloud training
   - Route 53 (DNS)
   - CloudFront
 - AWS servises are region0-scoped like lambda, EC2 and more!
-- ![AWS Services by Region](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)
+- [AWS Services by Region](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)
 
 ## IAM
 
