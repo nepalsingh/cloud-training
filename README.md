@@ -936,7 +936,7 @@ title: The Third Way: Culture of Continual Experimentation & Learning
 
   sequenceDiagram  
     Development -->> Operations: Deployment
-    box rgb(33,66,99) Deployment
+    box rgb(33,66,99)
        Operations --> Development: feedback and Deployment 
     end
 
