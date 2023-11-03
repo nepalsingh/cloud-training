@@ -925,8 +925,6 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 - Development and operation work together 
 - Build of pipeline from developer
 
-
-
 ### DevSecOps - The Three Ways
 
 ```mermaid
@@ -934,9 +932,11 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 title: The Third Way: Culture of Continual Experimentation & Learning
 ---
 
-  sequenceDiagram  
-    Development -->> Operations: Deployment
-    Operations --> Development: feedback and Deployment 
+  sequenceDiagram
+    Development ->> Operations: Deployment
+    loop daily Deployment
+    Operations --> Development: feedback
+    end
 
 ```
 
