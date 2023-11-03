@@ -911,10 +911,11 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 
 ```mermaid
 
-  sequenceDiagram  
-  FONTAWESOME["fa:fa-gitlab"]
-    Development ->> Operations: GITLAB[":monkey:"]
-    Operations -->> Development: GITLAB[":monkey:"]
+  sequenceDiagram
+    box rgb(33,69,99) Deployment 
+    Development ->> Operations: Deployment
+    Operations -->> Development: feedback
+    end
 
 ```
 - Development and operation work together 
