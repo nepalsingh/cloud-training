@@ -891,3 +891,8 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 
 
 ```
+
+
+### Fargate profile
+- Profile is grouping the resource together
+- 
