@@ -766,10 +766,13 @@ flowchart TD
 title: Application Service Task 
 ---
 flowchart LR
-  app1["App-A"]
-  app2["App-B"]
-  service1[" Service1 "]
-  taskdef1[" Task Definition for container"]
+  app1["App - A"]
+  app2["App - B"]
+  service1[" Service One "]
+  service2[" Service Two "]
+  taskdef1[" Task Definition 1 for <br /> container configuration"]
+  taskdef2[" Task Definition 2 for <br /> container configuration"]
   app1 --> service1 --> taskdef1
+  app2 --> service2 --> taskdef2
 
 ```
