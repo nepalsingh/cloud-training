@@ -940,7 +940,7 @@ title: The Third Way: Culture of Continual Experimentation & Learning
     loop Every Deployment
        Operations --> Development: feedback and Deployment 
     end 
-
+    end
 ```
 Reference: [Source: Gene Kim]('https://itrevolution.com/the-three-ways-principles-underpinning-devops/')
 
