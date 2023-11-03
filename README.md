@@ -895,4 +895,58 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 
 ### Fargate profile
 - Profile is grouping the resource together
-- 
+
+
+
+## CI/CD 
+### Approach Used In the “Olden” Times
+
+```mermaid
+
+  sequenceDiagram  
+    Development -->> Operations: #$@&%*!!!
+
+```
+- Development & Operations siloes
+- Lack of understanding of the other perspective
+- Lack of communication & partnership
+- “Fire and forget” engagement
+
+
+### DevSecOps -- The New Way
+
+```mermaid
+
+  sequenceDiagram  
+    Development -->> Operations: <Handshake emoji>
+
+```
+- Development and operation work together 
+- Build of pipeline from developer
+
+
+
+### DevSecOps - The Three Ways
+
+```mermaid
+---
+title: The Third Way: Culture of Continual Experimentation & Learning
+---
+
+  sequenceDiagram  
+    box yellow Deployment
+    Development -->> Operations: Deployment
+    loop Every Deployemnt
+       Operations --> Development
+    end 
+
+```
+Reference: [Source: Gene Kim]('https://itrevolution.com/the-three-ways-principles-underpinning-devops/')
+
+- Culture that fosters:
+- Continual experimentation, risk-taking, and learning from failure
+- Practice makes perfect!
+- Target outcomes:
+  - Allocating time for continual improvement (e.g., resolution of technical debt as a standard “category” of work)
+  - Taking risks and seeing them pay off - No guts no glory!
+  - Expecting failure & building resiliency into the process
