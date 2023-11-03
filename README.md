@@ -936,8 +936,8 @@ title: The Third Way: Culture of Continual Experimentation & Learning
   sequenceDiagram  
     box yellow Deployment
     Development -->> Operations: Deployment
-    loop Every Deployemnt
-       Operations --> Development
+    loop Every Deployment
+       Operations --> Development: feedback and Deployment 
     end 
 
 ```
