@@ -922,17 +922,18 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 ### DevSecOps - The Three Ways
 
 ```mermaid
----
-title: The Third Way: Culture of Continual Experimentation and Learning
----
 
-  sequenceDiagram
-    Development ->> Operations: Deployment
-    loop daily Deployment
+sequenceDiagram
+  Development ->> Operations: Deployment
+  loop daily Deployment
     Operations --> Development: feedback
-    end
+  end
 
 ```
+
+<!-- ---
+title: The Third Way: Culture of Continual Experimentation and Learning
+--- -->
 
 Reference: [Source: Gene Kim]('https://itrevolution.com/the-three-ways-principles-underpinning-devops/')
 
