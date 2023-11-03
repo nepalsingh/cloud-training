@@ -936,9 +936,10 @@ title: The Third Way: Culture of Continual Experimentation & Learning
 
   sequenceDiagram  
     Development -->> Operations: Deployment
-    loop Every Deployment
+    box rgb(33,66,99) Deployment
        Operations --> Development: feedback and Deployment 
     end
+
 ```
 Reference: [Source: Gene Kim]('https://itrevolution.com/the-three-ways-principles-underpinning-devops/')
 
