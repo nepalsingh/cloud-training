@@ -1015,7 +1015,7 @@ Reference from Gene Kim Source: [https://itrevolution.com/the-three-ways-princip
 # CAPSTONE Project
 
 1.  Objective is to ensure that you come together and think thoroughly about what is being done.
-  - Get into reasoning, debate, drawing diagrams, etc.
+    1. Get into reasoning, debate, drawing diagrams, etc.
 2. Work as a team. Few things are done by everyone (collectively). Few things are done by an individual.
 3. You will get overall 10 minutes for presentation. Keeping time is important and everyone should present
 4. Start capturing your challenges, problems, success as you move along. Take some snapshots, write a small note.
@@ -1023,8 +1023,8 @@ Reference from Gene Kim Source: [https://itrevolution.com/the-three-ways-princip
 6. Take this as an exercise to get clarity in what you are doing. You might not get everything 100% perfect, and that’s okay.
 7. Think of it like a project Draw rough timelines and do at least 2-3 checks every day. Be considerate of the available time.
 8. When multiple eyes see a thing, chances of making mistake goes down. But, if you are stuck - figure it out.
-  - While starting a new part, record what is completed successfully before this. So that you can delete the current part and restart again.
-9. Choose an alias for your team and include that in all your resources. Delete all your individual resources first.
+   1. While starting a new part, record what is completed successfully before this. So that you can delete the current part and restart again.
+9.  Choose an alias for your team and include that in all your resources. Delete all your individual resources first.
 10. 1 am there to help, but I want you to genuinely try it out first. Seeing an error code and finding its solution is the most required skill ©
 
 
