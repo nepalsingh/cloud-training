@@ -886,13 +886,75 @@ fargate-ip-10-0-12-72.us-west-2.compute.internal   Ready    <none>   48s   v1.27
 
 ```
 
+```log
+compute.internal in Controller
+[ec2-user@ip-10-0-2-108 eks-lab]$ kubectl get pods --all-namespaces --output wide
+NAMESPACE     NAME                       READY   STATUS    RESTARTS   AGE     IP            NODE                                                NOMINATED NODE   READINESS GATES
+default       nginx                      1/1     Running   0          142m    10.0.13.128   fargate-ip-10-0-13-128.us-west-2.compute.internal   <none>           <none>
+dev           nginx-dev                  1/1     Running   0          93s     10.0.13.38    fargate-ip-10-0-13-38.us-west-2.compute.internal    <none>           <none>
+kube-system   coredns-564bf9cb56-2wjqp   1/1     Running   0          3h52m   10.0.12.72    fargate-ip-10-0-12-72.us-west-2.compute.internal    <none>           <none>
+kube-system   coredns-564bf9cb56-vd7ww   1/1     Running   0          3h52m   10.0.11.6     fargate-ip-10-0-11-6.us-west-2.compute.internal     <none>           <none>
 
+```
+
+#### logs 
+```log
+[ec2-user@ip-10-0-2-108 eks-lab]$ eksctl utils associate-iam-oidc-provider --cluster npls-fargate-a2 --approve --region us-west-2
+2023-11-03 22:49:38 [ℹ]  will create IAM Open ID Connect provider for cluster "npls-fargate-a2" in "us-west-2"
+2023-11-03 22:49:38 [✔]  created IAM Open ID Connect provider for cluster "npls-fargate-a2" in "us-west-2"
+
+[ec2-user@ip-10-0-2-108 eks-lab]$ eksctl create iamserviceaccount --namespace dev --name ddb-sa-2 --cluster npls-fargate-a2  --attach-policy-arn arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess --approve --region us-west-2
+2023-11-03 22:51:46 [ℹ]  1 iamserviceaccount (dev/ddb-sa-2) was included (based on the include/exclude rules)
+2023-11-03 22:51:46 [!]  serviceaccounts that exist in Kubernetes will be excluded, use --override-existing-serviceaccounts to override
+2023-11-03 22:51:46 [ℹ]  1 task: { 
+    2 sequential sub-tasks: { 
+        create IAM role for serviceaccount "dev/ddb-sa-2",
+        create serviceaccount "dev/ddb-sa-2",
+    } }2023-11-03 22:51:46 [ℹ]  building iamserviceaccount stack "eksctl-npls-fargate-a2-addon-iamserviceaccount-dev-ddb-sa-2"
+2023-11-03 22:51:46 [ℹ]  deploying stack "eksctl-npls-fargate-a2-addon-iamserviceaccount-dev-ddb-sa-2"
+2023-11-03 22:51:46 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-addon-iamserviceaccount-dev-ddb-sa-2"
+2023-11-03 22:52:16 [ℹ]  waiting for CloudFormation stack "eksctl-npls-fargate-a2-addon-iamserviceaccount-dev-ddb-sa-2"
+2023-11-03 22:52:16 [ℹ]  created serviceaccount "dev/ddb-sa-2"
+
+
+ec2-user@ip-10-0-2-108 eks-lab]$ kubectl get sa ddb-sa-2 -o yaml --namespace dev
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::962804699607:role/eksctl-npls-fargate-a2-addon-iamserviceaccoun-Role1-Mqo7xkR5N6Gc
+  creationTimestamp: "2023-11-03T22:52:16Z"
+  labels:
+    app.kubernetes.io/managed-by: eksctl
+  name: ddb-sa-2
+  namespace: dev
+  resourceVersion: "46477"
+  uid: 869c6aec-1f38-4f4d-82e8-3e4c49944994
+
+
+
+
+``` 
 ### Fargate profile
 - Profile is grouping the resource together
 
 
 
-## CI/CD 
+## CI/CD fandamentals 
+
+We would like our code **"in a repository"** and have it deployed onto AWS
+
+- Automatically
+- The right way
+- Making sure it's tested before being deployed
+- With possibility to go into different stages (dev, test, staging, prod)
+- With manual approval where needed
+- AWS CodeCommit - storing our code
+- AWS CodePipeline - automating our pipeline from code to Elastic Beanstalk
+- AWS CodeBuild - building and testing our code
+- AWS CodeDeploy - deploying the code to EC2 instances
+
+
 ### Approach Used In the “Olden” Times
 
 ```mermaid
